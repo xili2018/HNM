@@ -192,7 +192,7 @@ def metrics(prediction, target, ignored_labels=[], n_classes=None):
 
     print("accuracy:", accuracy)
     
-def sample_gt(gt, train_size,seed = 1):
+def sample_gt(gt, train_size):
     """
     Extract a fixed percentage of samples from an array of labels.
     
@@ -205,7 +205,7 @@ def sample_gt(gt, train_size,seed = 1):
     if train_size > 1:
        train_size = int(train_size)
     
-    train_indices, test_indices = sklearn.model_selection.train_test_split(X, train_size=train_size, stratify=y, random_state =seed) 
+    train_indices, test_indices = sklearn.model_selection.train_test_split(X, train_size=train_size, stratify=y) 
     train_indices = [list(t) for t in zip(*train_indices)]
     test_indices = [list(t) for t in zip(*test_indices)]
     train_gt[train_indices] = gt[train_indices]
